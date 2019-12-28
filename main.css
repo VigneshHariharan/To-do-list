@@ -1,0 +1,163 @@
+html,
+body {
+	margin: 0%;
+	padding: 0%;
+}
+
+#body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 25px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-flow: nowrap column;
+	flex-flow: nowrap column;
+	width: 900px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+#body h1 {
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	margin: 0 auto;
+}
+
+#body div {
+	width: inherit;
+	text-align: center;
+	margin: auto;
+}
+
+#add-element {
+	padding-top: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+#add-element #input {
+	width: 200px;
+	height: 40px;
+	margin-right: 20px;
+	border-radius: 3px;
+	border: 1px solid black;
+	font-size: 20px;
+	color: #2b6be2;
+	cursor: pointer;
+	padding-left: 15px;
+}
+
+#add-element #add {
+	width: 125px;
+	height: 50px;
+	background-color: #2b6be2;
+	color: white;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-width: 1px;
+	border-radius: 5px;
+	border: 1px solid #2b6be2;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+#add-element #add:hover {
+	background-color: white;
+	color: #2b6be2;
+}
+
+ul {
+	list-style: none;
+	text-align: justify;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-flow: wrap column;
+	flex-flow: wrap column;
+}
+
+.li {
+	border: 1px solid #2b6be2;
+	width: 500px;
+	padding: 15px;
+	margin: 10px auto;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: black;
+	background-color: white;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	-webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .3s ease-in-out;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .3s ease-in-out;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out, box-shadow .3s ease-in-out;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out, box-shadow .3s ease-in-out,
+		-webkit-box-shadow .3s ease-in-out;
+}
+
+.li p {
+	width: 70%;
+	margin-right: 20px;
+	word-break: break-all;
+	padding: 10px;
+}
+
+.li button {
+	width: 120px;
+	height: 45px;
+	border-width: 1px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	-webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.li .edit-button {
+	margin-left: 20px;
+	background-color: rgb(127, 80, 255);
+	color: white;
+}
+
+.li .edit-button:hover {
+	background-color: rgb(75, 24, 218);
+	color: white;
+}
+
+.li .delete-button {
+	margin-left: auto;
+	background-color: #e63b3b;
+	color: white;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.li .delete-button:hover {
+	background-color: #f00f0f;
+	color: whitesmoke;
+}
+
+.li:hover {
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+	background-color: whitesmoke;
+	color: #1f1e1e;
+}
+
+/*# sourceMappingURL=main.css.map */
