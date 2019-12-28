@@ -1,34 +1,70 @@
-const input = document.getElementById('input');
 const button = document.getElementById('add');
 const body = document.getElementById('body');
+const input = document.getElementById('input');
 let liValue = '';
-const ul = document.createElement('ul');
-const deleteButton = document.getElementsByClassName('delete-button');
+const ul = document.getElementById('ul');
+const ulFragment = document.createDocumentFragment();
 
-ul.classList.add('ul');
-body.appendChild(ul);
+const defaultLists = [
+	{
+		title: 'head',
+		description: 'body'
+	},
+	{
+		title: 'head',
+		description: 'body'
+	},
+	{
+		title: 'head',
+		description: 'body'
+	}
+];
 
-const addList = () => {
-	if (input.value === '') return '';
+const createNewList = (item) => {
 	const fragment = document.createDocumentFragment();
 	const li = document.createElement('li');
 	const p = document.createElement('p');
 	const deleteButton = document.createElement('button');
 	const editButton = document.createElement('button');
 
-	fragment.appendChild(li);
 	deleteButton.innerText = 'DELETE';
-	deleteButton.classList.add('delete-button');
 	editButton.innerText = 'EDIT';
+	p.innerText = item.title;
+
 	editButton.classList.add('edit-button');
+	deleteButton.classList.add('delete-button');
 	li.classList.add('li');
-	p.innerText = liValue;
+
 	li.appendChild(p);
 	li.appendChild(deleteButton);
 	li.appendChild(editButton);
-	// appending it to fragment so it will be stored as a separate node
-	ul.appendChild(fragment);
+	fragment.appendChild(li);
 
+	// appending it to fragment so it will be stored as a separate node
+	return fragment;
+};
+
+const createList = (list) => {
+	const lists = [ ...list ];
+	console.log(lists);
+	lists.map((item) => {
+		const newNode = createNewList(item);
+		ulFragment.appendChild(newNode);
+	});
+	ul.appendChild(ulFragment);
+};
+
+createList(defaultLists);
+
+const addList = () => {
+	if (input.value === '') return '';
+	const item = {
+		title: input.value,
+		description: 'value'
+	};
+	lists.push(item);
+	const newNode = createNewList(item);
+	ul.appendChild(newNode);
 	input.value = '';
 	liValue = '';
 };
@@ -79,4 +115,3 @@ input.addEventListener('keypress', (e) => {
 });
 
 button.addEventListener('click', addList);
-// deleteButton.addEventListener('click', (e) => console.log(e));
