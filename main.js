@@ -1,6 +1,6 @@
 const button = document.getElementById('add');
 const body = document.getElementById('body');
-const input = document.getElementById('input');
+const input = document.getElementsByClassName('input')[0];
 let liValue = '';
 const ul = document.getElementById('ul');
 const ulFragment = document.createDocumentFragment();
@@ -20,7 +20,7 @@ const defaultLists = [
 	}
 ];
 
-const createNewList = (item) => {
+const createNewList = (item, index) => {
 	const fragment = document.createDocumentFragment();
 	const li = document.createElement('li');
 	const p = document.createElement('p');
@@ -29,6 +29,7 @@ const createNewList = (item) => {
 
 	deleteButton.innerText = 'DELETE';
 	editButton.innerText = 'EDIT';
+	li.key = index;
 	p.innerText = item.title;
 
 	editButton.classList.add('edit-button');
@@ -36,8 +37,8 @@ const createNewList = (item) => {
 	li.classList.add('li');
 
 	li.appendChild(p);
-	li.appendChild(deleteButton);
 	li.appendChild(editButton);
+	li.appendChild(deleteButton);
 	fragment.appendChild(li);
 
 	// appending it to fragment so it will be stored as a separate node
@@ -46,9 +47,8 @@ const createNewList = (item) => {
 
 const createList = (list) => {
 	const lists = [ ...list ];
-	console.log(lists);
-	lists.map((item) => {
-		const newNode = createNewList(item);
+	lists.map((item, index) => {
+		const newNode = createNewList(item, index);
 		ulFragment.appendChild(newNode);
 	});
 	ul.appendChild(ulFragment);
@@ -62,7 +62,7 @@ const addList = () => {
 		title: input.value,
 		description: 'value'
 	};
-	lists.push(item);
+	defaultLists.push(item);
 	const newNode = createNewList(item);
 	ul.appendChild(newNode);
 	input.value = '';
@@ -78,25 +78,22 @@ ul.addEventListener('click', (e) => {
 	}
 
 	if (e.target.className === 'edit-button') {
-		e.target.id = 'edit';
-		const input = document.createElement('input');
-		input.id = 'input';
-
-		const editTarget = document.getElementById(e.target.id);
-		editTarget.parentNode.id = 'edit';
-		const p = editTarget.parentNode.children[0];
-		const li = editTarget.parentNode;
-		li.replaceChild(input, p);
-
-		let liValue = '';
-		input.addEventListener('input', (e) => {
-			liValue = e.target.value;
+		const editLi = e.target.parentNode;
+		const childptag = editLi.children[0];
+		childptag.value = '';
+		const editInput = document.createElement('input');
+		editInput.classList.add('input');
+		editInput.autofocus = true;
+		let editValue = '';
+		editLi.replaceChild(editInput, childptag);
+		editInput.addEventListener('input', (e) => {
+			editInput.value = e.target.value;
+			editValue = e.target.value;
 		});
-		input.addEventListener('keypress', (e) => {
+		editInput.addEventListener('keypress', (e) => {
 			if (e.key === 'Enter') {
-				const p = document.createElement('p');
-				p.value = liValue;
-				li.replaceChild(p, input);
+				childptag.innerText = editValue;
+				editLi.replaceChild(childptag, editInput);
 			}
 		});
 	}
